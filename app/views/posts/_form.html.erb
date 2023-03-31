@@ -18,5 +18,11 @@
     <%= form.label :address %>
     <%= form.text_field :address %>
   </div>
+  <div>
+    <%= form.collection_select :category_ids, Category.all, :id, :name %>
+  </div>
+  <div>
+    <%= form.file_field :image %>
+  </div>
   <%= form.submit %>
 <% end %>
