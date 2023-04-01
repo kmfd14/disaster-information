@@ -1,0 +1,14 @@
+
+  <h1>Title <%= @post.title %></h1>
+  <%= link_to 'Post List', posts_path %>
+  <h2>Comments</h2>
+
+  <div class="d-flex flex-row">
+    <% @comments.each do |comment| %>
+      <div><%= comment.content %>(<%= comment.created_at %>) by <%= comment.user&.email %><div>
+        <div class="d-flex flex column">
+          <%= link_to 'Edit', edit_post_comment_path(@post, comment), class:'btn btn-secondary' if user_signed_in? && comment.user == current_user %>
+          <%= button_to 'Delete', post_comment_path(@post, comment), method: :delete, class:'btn btn-danger' if user_signed_in? && comment.user == current_user %>
+        </div>
+    <% end %>
+  </div>
