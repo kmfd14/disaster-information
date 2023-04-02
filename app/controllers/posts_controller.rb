@@ -34,8 +34,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path
+    unless @post.destroy
+      flash[:alert] = 'Cannot be delete, because this post has comments.'
+    end
+      redirect_to posts_path
   end
 
   private

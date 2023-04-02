@@ -7,6 +7,7 @@
         <td>category</td>
         <td>title</td>
         <td>content</td>
+        <td>address</td>
         <td>comment count</td>
         <td>image</td>
         <td>action</td>
@@ -17,6 +18,7 @@
           <td><%= post.categories.pluck(:name).join(',') %></td>
           <td><%= post.title %></td>
           <td><%= post.content %></td>
+          <td><%= post.address %></td>
           <td><%= post.comments_count %></td>
           <td><%= image_tag post.image.url if post.image.present? %></td>
           <td>
