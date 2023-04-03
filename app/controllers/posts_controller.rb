@@ -21,7 +21,11 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  # def show; end
+  def show
+    # Find the post based on the short URL
+    @post = Post.find_by(short_url: params[:short_url])
+  end
 
   def edit; end
 
@@ -49,8 +53,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # def set_post
+  #   @post = Post.find(params[:id])
+  # end
   def set_post
-    @post = Post.find(params[:id])
+    # Find the post based on either the ID or the short URL
+    if params[:id]
+      @post = Post.find(params[:id])
+    else
+      @post = Post.find_by(short_url: params[:short_url])
+    end
   end
 
   def post_params
