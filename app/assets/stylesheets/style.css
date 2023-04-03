@@ -33,7 +33,7 @@ img {
   width: 100%;
 }
 
-/*Login Page*/
+/*Login Page, Signup Page*/
 section {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   display: flex;
@@ -93,6 +93,13 @@ section {
 
 .inputbox input::placeholder {
   color: white;
+}
+
+em {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  color: #fff;
 }
 
 .form-box i {
