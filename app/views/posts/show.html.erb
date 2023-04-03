@@ -1,5 +1,2 @@
-<h1>show post id: <%= @post.id %></h1>
-<ul>
-  <li><%= @post.title %></li>
-  <li><%= @post.content %></li>
-</ul>
+<h1><%= @post.title if @post %></h1>
+<p><%= @post.content if @post %></p>
