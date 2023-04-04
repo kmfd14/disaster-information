@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_admin
   before_action :set_category, only: [:edit, :update, :destroy]
   def index
     @categories = Category.all
@@ -33,6 +35,9 @@ class CategoriesController < ApplicationController
   end
 
   private
+  def authorize_admin
+    redirect_to root_path, alert: 'Access Denied. You are not authorized to this path.' unless current_user.admin?
+  end
 
   def set_category
     @category = Category.find(params[:id])
