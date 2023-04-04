@@ -1,4 +1,3 @@
-<body>
 <section>
   <div class="form-box">
     <div class="form-value">
@@ -7,22 +6,22 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="inputbox">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
         </div>
 
         <div class="inputbox">
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password" %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br/>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %>
         </div>
 
         <div class="inputbox">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Repeat Password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Repeat Password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up", class:"button" %>
+          <%= f.submit "Sign up", class: "button" %>
         </div>
       <% end %>
 
@@ -30,4 +29,3 @@
     </div>
   </div>
 </section>
-</body>
