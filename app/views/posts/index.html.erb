@@ -23,7 +23,7 @@
           <td><%= image_tag post.image.url if post.image.present? %></td>
           <td>
             <div class='d-flex flex-column'>
-              <%= link_to 'Show', post_path(post), class:'btn btn-info' %>
+              <%= link_to 'Show', short_post_path(post.short_url), class:'btn btn-info' %>
               <%= link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' if user_signed_in? && post.user == current_user %>
               <%= button_to 'Delete', post_path(post), method: :delete, class:'btn btn-danger' if user_signed_in? && post.user == current_user %>
               <%= link_to 'Comments', post_comments_path(post), class:'btn btn-info' %>
