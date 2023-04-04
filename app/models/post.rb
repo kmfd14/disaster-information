@@ -14,9 +14,17 @@ class Post < ApplicationRecord
 
   def generate_short_url
     self.short_url = loop do
-      random_token = SecureRandom.random_number(10_000).to_s.rjust(4, '0')
+      random_token = "#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
       break random_token unless Post.exists?(short_url: random_token)
     end
-  end  
+  end
+
+  # def generate_short_url
+  #   self.short_url = loop do
+  #     random_token = SecureRandom.random_number(10_000).to_s.rjust(4, '0')
+  #     break random_token unless Post.exists?(short_url: random_token)
+  #   end
+  # end
+
   
 end
