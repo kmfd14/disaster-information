@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   belongs_to :user
   mount_uploader :image, ImageUploader
 
+  # 4 digit short url
   before_create :generate_short_url
 
   def generate_short_url
