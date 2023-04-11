@@ -9,27 +9,31 @@
         <td>content</td>
         <td>address</td>
         <td>comment count</td>
+        <td>country</td>
+        <td>country code</td>
         <td>image</td>
         <td>action</td>
     </thead>
     <% @posts.each do |post| %>
       <tr>
-          <td><%= post.user&.email %></td>
-          <td><%= post.categories.pluck(:name).join(',') %></td>
-          <td><%= post.title %></td>
-          <td><%= post.content %></td>
-          <td><%= post.address %></td>
-          <td><%= post.comments_count %></td>
-          <td><%= image_tag post.image.url if post.image.present? %></td>
-          <td>
-            <div class='d-flex flex-column'>
-              <%= link_to 'Show', short_post_path(post.short_url), class:'btn btn-info' %>
-              <%= link_to 'Edit', edit_post_path(post), class:'btn btn-secondary' if policy(post).edit? %>
-              <%= button_to 'Delete', post_path(post), method: :delete, class:'btn btn-danger' if policy(post).destroy? %>
-              <%= link_to 'Comments', post_comments_path(post), class:'btn btn-info' %>
-              <%= link_to 'New Comment', new_post_comment_path(post), class:'btn btn-primary' %>
-            </div>
-          </td>
+        <td><%= post.user&.email %></td>
+        <td><%= post.categories.pluck(:name).join(',') %></td>
+        <td><%= post.title %></td>
+        <td><%= post.content %></td>
+        <td><%= post.address %></td>
+        <td><%= post.comments_count %></td>
+        <td><%= Geocoder.search(post.country).first&.country %></td>
+        <td><%= Geocoder.search(post.country_code).first&.country %></td>
+        <td><%= image_tag post.image.url if post.image.present? %></td>
+        <td>
+          <div class='d-flex flex-column'>
+            <%= link_to 'Show', short_post_path(post.short_url), class: 'btn btn-info' %>
+            <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-secondary' if policy(post).edit? %>
+            <%= button_to 'Delete', post_path(post), method: :delete, class: 'btn btn-danger' if policy(post).destroy? %>
+            <%= link_to 'Comments', post_comments_path(post), class: 'btn btn-info' %>
+            <%= link_to 'New Comment', new_post_comment_path(post), class: 'btn btn-primary' %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </table>

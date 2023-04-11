@@ -14,6 +14,14 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    if Rails.env.development?
+      ip_address = Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
+    else
+      ip_address = request.remote_ip
+    end
+    @post.country = Geocoder.search(ip_address).first.country
+    @post.country_code = Geocoder.search(ip_address).first.country_code
+    @post.isp = Geocoder.search()
     if @post.save
       redirect_to posts_path
     else
@@ -45,10 +53,11 @@ class PostsController < ApplicationController
     unless @post.destroy
       flash[:alert] = 'Cannot be delete, because this post has comments.'
     end
-      redirect_to posts_path
+    redirect_to posts_path
   end
 
   private
+
   # def validate_post_owner
   #   unless @post.user == current_user
   #     flash[:notice] = 'the post not belongs to you'
