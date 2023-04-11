@@ -23,9 +23,9 @@
         <td><%= post.content %></td>
         <td><%= post.address %></td>
         <td><%= post.comments_count %></td>
-        <td><%= Geocoder.search(post.country).first&.country %></td>
-        <td><%= Geocoder.search(post.country_code).first&.country %></td>
-        <td><%= Geocoder.search(post.isp).first&.country %></td>
+        <td><%= post.country %></td>
+        <td><%= post.country_code %></td>
+        <td><%= post.isp %></td>
         <td><%= image_tag post.image.url if post.image.present? %></td>
         <td>
           <div class='d-flex flex-column'>

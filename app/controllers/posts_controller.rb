@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user).all.order(created_at: :desc)
+    @posts = Post.includes(:categories, :user).all.order(comments_count: :desc, created_at: :desc)
   end
 
   def new
@@ -19,8 +19,8 @@ class PostsController < ApplicationController
     else
       ip_address = request.remote_ip
     end
-    @post.country = Geocoder.search(ip_address).first.country
     @post.country_code = Geocoder.search(ip_address).first.country_code
+    @post.country = Geocoder.search(@post.country_code).first.country
     @post.isp = Geocoder.search(ip_address).first.data['org']
     if @post.save
       redirect_to posts_path
