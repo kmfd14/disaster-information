@@ -26,6 +26,4 @@ class Post < ApplicationRecord
   #     break random_token unless Post.exists?(short_url: random_token)
   #   end
   # end
-
-  
 end

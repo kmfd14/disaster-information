@@ -1,15 +1,17 @@
-<body>
-  <div id="comments-container" class="comments-container">
-    <h1>Title <%= @post.title %></h1>
-    <h2>Comments</h2>
-    <% @comments.each do |comment| %>
-      <%= comment.content %>(<%= comment.created_at %>) by 
-      <%= comment.user&.email %>
-      <div class='comment-ctrl'>
-        <%= link_to 'Edit', edit_post_comment_path(@post, comment), class:'btn btn-secondary' if user_signed_in? && comment.user == current_user %>
-        <%= button_to 'Delete', post_comment_path(@post, comment), method: :delete, class:'btn btn-danger' if user_signed_in? && comment.user == current_user %>
+<div class="comments-container">
+  <h1>Title <%= @post.title %></h1>
+  <h2>Comments</h2>
+  <% @comments.each do |comment| %>
+    <div class="comment-box">
+      <div class="comment-created-usr">
+        <div>Posted by <%= comment.user&.email %></div>
+        <div><%= comment.created_at.strftime("%B %d, %Y") %></div>
       </div>
-    <% end %>
-  </div>
-</body>
-
+      <div class="comment-content"><%= comment.content %></div>
+      <div class='comment-ctrl'>
+          <%= link_to 'Edit', edit_post_comment_path(@post, comment), class: 'btn btn-secondary' if user_signed_in? && comment.user == current_user %>
+          <%= button_to 'Delete', post_comment_path(@post, comment), method: :delete, class: 'btn btn-danger' if user_signed_in? && comment.user == current_user %>
+      </div>
+    </div>
+  <% end %>
+</div>

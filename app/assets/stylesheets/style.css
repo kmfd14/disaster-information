@@ -211,11 +211,40 @@ em {
 .comments-container {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
   margin: 0px auto;
 }
 
 .comment-ctrl {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2rem;
+  align-content: space-evenly;
+  height: auto;
+  width: 50%;
+  border-top: gray solid 2px;
+  border-bottom: gray solid 2px;
+  padding: 25px 10px 25px 10px;
+  margin: 5px 0;
+}
+
+.comment-created-usr {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  text-align: left;
+  padding: 0 5px 0 0;
+  border-right: darkgray 2px solid;
+  height: auto;
+}
+
+.comment-content {
+  margin: 0 5px;
 }
