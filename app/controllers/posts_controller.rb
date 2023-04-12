@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   def destroy
     authorize @post, :destroy?, policy_class: PostPolicy
     unless @post.destroy
-      flash[:alert] = 'Cannot be delete, because this post has comments.'
+      flash[:alert] = 'Cannot be deleted, because this post has comments.'
     end
     redirect_to posts_path
   end

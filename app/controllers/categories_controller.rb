@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     unless @category.destroy
-      flash[:alert] = 'Category cannot be delete, because this category is being used in a post.'
+      flash[:alert] = 'Category cannot be deleted, because this category is being used in a post.'
     end
     redirect_to categories_path
   end

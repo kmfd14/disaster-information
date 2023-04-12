@@ -31,6 +31,9 @@
 
 en:
   hello: "Hello world"
-
+  errors:
+    messages:
+      error1: "Cannot be deleted."
+      error2: "A post is using this category."
   resources:
     destroy_blocked: This item cannot be deleted as other data depends on it.
