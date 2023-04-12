@@ -4,7 +4,10 @@ class PostsController < ApplicationController
   # before_action :validate_post_owner, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:categories, :user).all.order(comments_count: :desc, created_at: :desc)
+    top_posts = Post.includes(:categories, :user).all.order(comments_count: :desc).limit(3)
+    other_posts = Post.where.not(id: top_posts.map(&:id)).order(created_at: :desc)
+    @posts = top_posts + other_posts
+    #@posts = Post.includes(:categories, :user).all.order(comments_count: :desc, created_at: :desc)
   end
 
   def new
